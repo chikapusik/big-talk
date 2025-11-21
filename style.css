@@ -1,0 +1,51 @@
+html{background-color: #0e2d46;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  }
+nav{color:white;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;}
+
+a{color:white;}
+
+.logo{
+        font-weight:bald;
+        font-size:58px;}
+
+
+p{text-align: center;
+  padding: 50px 20px;
+        color:white;
+        font-size:20px;}
+
+
+.bottom-fixed{
+     position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;   
+  z-index: 10;
+}
+
+.cards{ display: flex;
+        flex-direction:row;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto
+        background-image:url('6219721.jpg');
+        
+}
+
+.opened{width:360px;
+        height:420px;
+        background-color:#8c9495;
+        border-radius:16px;}
+
+.not_opened{width:360px;
+        height: 420px;
+        background-color:red;
+        border-radius:16px;}
