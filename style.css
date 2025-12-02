@@ -2,23 +2,28 @@ html{background-color: #0e2d46;
 }
 body {
   font-family: "Montserrat", sans-serif;
+  margin:0;
   }
-nav{color:white;
+
+nav{
         display:flex;
         justify-content:space-between;
-        align-items:center;}
+        padding:20px;}
 
-a{color:white;}
+a{color:white;
+        text-decoration:none;}
 
 .logo{
-        font-weight:bald;
-        font-size:58px;}
+        font-weight:600;
+        font-size:42px;}
 
 
 p{text-align: center;
   padding: 50px 20px;
         color:white;
-        font-size:20px;}
+        font-size:20px;
+        max-width:700px;
+        margin:0 auto;}
 
 
 .bottom-fixed{
@@ -30,28 +35,18 @@ p{text-align: center;
 }
 
 .cards{ display: flex;
-        flex-direction:row;
-        gap: 20px;
+        
          justify-content: center;
          padding: 40px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-        background-image:url('6219721.jpg');
         
 }
 
-.opened{width:360px;
+.deck{width:360px;
         height:420px;
-        background-color:#8c9495;
-        border-radius:16px;}
-
-.not_opened{width:360px;
         position:relative;
-        height: 420px;
-        background-color:red;
-        border-radius:16px;}
+        perspective:1200px;}
 
-.not_opened, .opened{ perspective:1200px;}
+
 .card{position:absolute;
         top:0;
         left:0;
@@ -67,19 +62,13 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-transition:transform 0.5s ease opacity 0.5s ease;
+transition:transform 0.5s ease, opacity 0.5s ease;
 transform-origin:top center;
-backface-visibility:hidden;}
-
-.card.flip-in{ transform:rotateX(0deg) tranlsateY(0) scale(1);
-                opacity:1;
-                transition:transform 0.42s cubic-bezier(.2,.9,.2,1), opacity 0.25s ease;
-        }
-.card.init-flip-in{
-        transform:rotateX(90deg) translateY(-20px) translateZ(0);
-        opacity:0;
-        transition:none;
+backface-visibility:hidden;
+ 
+    transform-style: preserve-3d;
 }
+
 
 .card:nth-child(1){z-index:20;}
 .card:nth-child(2){z-index:19; transform: scale(0.98);}
@@ -103,8 +92,22 @@ backface-visibility:hidden;}
         margin-top:20px;}
 
 .btn{padding:12px 24px;
-        background-color: aliceblue
+        background-color: aliceblue;
         border:none;
         border-radius:8px;
         font-size:18px;
         cursor:pointer;}
+
+
+
+
+.flip-out {
+    transform: rotateY(90deg);
+    opacity: 0;
+}
+
+
+.flip-in {
+    transform: rotateY(0deg);
+    opacity: 1;
+}

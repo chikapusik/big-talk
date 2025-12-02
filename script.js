@@ -1,18 +1,47 @@
-const opened = document.querySelector('.opened');
-const notOpened=document.querySelector('.not_opened');
-const next=document.querySelector('.next');
-const prev=document.querySelector('.prev');
+const deck = document.querySelector('.deck');
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
+
 next.addEventListener('click', goForward);
-prev.addEventListener('click',goBack);
-function goForward(){
-    const cards = notOpened.querySelectorAll('.card');
-    if (cards.length===0) return;
-    const topCard=cards[0];
-    opened.appendChild(topCard);
+prev.addEventListener('click', goBack);
 
+function goForward() {
+    const cards = deck.querySelectorAll('.card');
+    if (cards.length === 0) return;
+
+    const topCard = cards[0];
+
+    topCard.classList.add("flip-out");
+
+    setTimeout(() => {
+        deck.appendChild(topCard);
+
+        topCard.classList.remove("flip-out");
+        topCard.classList.add("flip-in");
+
+        setTimeout(() => {
+            topCard.classList.remove("flip-in");
+        }, 300);
+
+    }, 300);
 }
-function goBack(){const openedCards = opened.querySelectorAll('.card');
-  if (openedCards.length === 0) return;
 
-  const lastOpenedCard = openedCards[openedCards.length - 1];
-  notOpened.prepend(lastOpenedCard);}
+function goBack() {
+    const cards = deck.querySelectorAll('.card');
+    if (cards.length === 0) return;
+
+    const lastCard = cards[cards.length - 1];
+
+    lastCard.classList.add("flip-out");
+
+    setTimeout(() => {
+        deck.prepend(lastCard);
+
+        lastCard.classList.remove("flip-out");
+        lastCard.classList.add("flip-in");
+
+        setTimeout(() => {
+            lastCard.classList.remove("flip-in");
+        }, 300);
+    }, 300);
+}
