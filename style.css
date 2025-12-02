@@ -17,13 +17,39 @@ a{color:white;
         font-weight:600;
         font-size:42px;}
 
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* чтобы снег не мешал кликам */
+    z-index: 5;
+    overflow: hidden;
+}
 
-p{text-align: center;
-  padding: 50px 20px;
-        color:white;
-        font-size:20px;
-        max-width:700px;
-        margin:0 auto;}
+.snowflake {
+    position: absolute;
+    top: -50px;
+    color: white;
+    user-select: none;
+    font-family: Arial, sans-serif;
+    opacity: 0.8;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) translateX(var(--x-move, 50px)) rotate(var(--rotate, 360deg));
+        opacity: 0;
+    }
+}
 
 
 .bottom-fixed{
@@ -85,20 +111,42 @@ backface-visibility:hidden;
 .card:nth-child(13){z-index:8; transform: scale(0.76);}
 .card:nth-child(14){z-index:7; transform: scale(0.74);}
 .card:nth-child(15){z-index:6; transform: scale(0.72);}
+.card:nth-child(16){z-index:5; transform: scale(0.70);}
+.card:nth-child(17){z-index:4; transform: scale(0.68);}
+
+.first-card{background-color:#DCECF5;
+                color:#091922;}
+.last-card{background-color:#DCECF5;
+                color:#091922;}
 
 .controls{display:flex;
         gap:20px;
         justify-content:center;
-        margin-top:20px;}
+        margin-top:20px;
+        margin-bottom:50px;}
 
-.btn{padding:12px 24px;
+.btn{padding:12px 28px;
         background-color: aliceblue;
         border:none;
-        border-radius:8px;
+        border-radius:12px;
         font-size:18px;
+        font-weight:400;
+        color:rgb(24, 85, 107)22;
+        box-shadow:0 4px 15px rgba(0,0,0,0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, baclground 0.3s ease;
         cursor:pointer;}
 
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    
+}
 
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
 
 
 .flip-out {
@@ -111,3 +159,9 @@ backface-visibility:hidden;
     transform: rotateY(0deg);
     opacity: 1;
 }
+
+.flip-back-in{transform:rotateY(-90deg);
+                opacity:0;}
+
+.flip-back-out{transform:rotateY(0deg)
+                opacity:1;}
